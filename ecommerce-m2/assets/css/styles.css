@@ -1,0 +1,74 @@
+/* -------------------------------------------------------------------------- */
+/* ---------------------------- FUENTES PERSONALIZADAS ---------------------- */
+/* -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'Euphorigenic';
+  src: url('../fonts/Euphorigenic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('../fonts/NunitoSans.ttf') format('truetype');
+
+  font-weight: 200 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('../fonts/NunitoSans-Italic.ttf') format('truetype');
+
+  font-weight: 200 900;
+  font-style: italic;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* ------------------------ ESTILOS GENERALES ------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 400; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Euphorigenic';
+  font-weight: 200;
+}
+
+/* -------------------------------------------------------------------------- */
+/* ------------------------ ESTILOS ESPECÍFICOS ----------------------------- */
+/* -------------------------------------------------------------------------- */
+
+#hero-content{
+  background-image: url('../img/collage2.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 75vh;
+}
+
+.navbar-brand {
+  font-family: 'Euphorigenic';
+  font-weight: 900;
+  font-size: 2.5rem;
+}
+
+.nav-item .nav-link {
+  font-family: 'Nunito Sans';
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding-top: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(85, 4, 4);
+  font-weight: 600;
+}
+
+#seccion-detalle-producto{
+  background-color: #f8f8f8;
+  min-height: 80vh;
+}

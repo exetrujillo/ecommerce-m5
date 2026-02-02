@@ -1,0 +1,118 @@
+// /assets/js/producto-musica.js
+import { obtenerProducto } from "./productos.js";
+
+// Links que usé
+//
+// - Para querystring: https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams#parsing_window.location
+
+/* =============== FUNCION PRINCIPAL =================== */
+function cargarProductoMusica() {
+  // parsear el query string
+  const paramsString = window.location.search;
+  const searchParams = new URLSearchParams(paramsString);
+  const idProducto = searchParams.get("id");
+  if(!idProducto) {
+    console.error("No se proporcionó un ID de producto en el query string");
+    return;
+  }
+
+  // producto
+  const producto = obtenerProducto('musica', idProducto);
+  if(!producto) {
+    console.error("No se encuentra el producto con este ID");
+    return;
+  }
+
+  renderBreadcrumb(producto);
+  renderFoto(producto);
+  renderDescripcion(producto);
+  renderCompra(producto);
+  document.title = `${producto.nombre} - Violentistas de Siempre`;
+}
+
+/* ============= FUNCIONES SECUNDARIAS ================= */
+function renderBreadcrumb(producto) {
+  const breadcrumbContainer = $("#breadcrumb-container");
+  const breadcrumbHtml = `
+    <li class="breadcrumb-item"><a href="${window.BASE_URL}index.html">Inicio</a></li>
+    <li class="breadcrumb-item"><a href="${window.BASE_URL}pages/musica.html">Música</a></li>
+    <li class="breadcrumb-item active" aria-current="page">${producto.nombre}</li>
+  `;
+  breadcrumbContainer.html(breadcrumbHtml);
+}
+
+function renderFoto(producto) {
+  const fotoContainer = $("#foto-producto-container");
+  const fotoHtml = `
+    <img 
+      src="${window.BASE_URL}assets/img/${producto.imagen}"
+      alt="Foto ${producto.nombre}"
+      class="img-fluid"
+    >
+  `;
+  fotoContainer.html(fotoHtml);
+}
+
+function renderDescripcion(producto){
+  const tracklistHtml =  producto.tracklist ? `
+    <strong>Tracklist:</strong>
+    <ol>
+      ${producto.tracklist.map(track => `<li>${track}</li>`).join('')}
+    </ol>
+  ` : '';
+
+  const especiHtml = producto.especificaciones ? `
+    <ul>${producto.especificaciones.map(esp => `<li>${esp}</li>`).join('')}</ul>
+  ` : '';
+
+  const descripcionContainer = $("#descripcion-producto-container");
+  const descripcionHtml = `
+    <h2>${producto.nombre}</h2>
+    <p>${producto.descripcion}</p>
+      ${especiHtml}
+      ${tracklistHtml}
+  `;
+  descripcionContainer.html(descripcionHtml)
+}
+
+function renderCompra(producto) {
+  const compraContainer = $("#compra-producto-container");
+  const compraHtml = `
+    <h3>Comprar</h3>
+    <p class="fs-4 fw-bold">$${producto.precio.toLocaleString('es-CL')} CLP</p>
+    <form id="form-agregar-carrito">
+      <div class="mb-3">
+        <label for="cantidad" class="form-label">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" 
+               class="form-control" value="1" min="1" max="${producto.stock}">
+      </div>
+      <button type="submit" class="btn btn-primary">Agregar al Carrito</button>
+    </form>
+  `;
+  compraContainer.html(compraHtml);
+
+  // Event listener para el formulario
+  $('#form-agregar-carrito').on('submit', function(e) {
+    e.preventDefault();
+    agregarAlCarrito(producto);
+  });
+}
+
+function agregarAlCarrito(producto) {
+  const cantidad = parseInt($('#cantidad').val());
+  
+  console.log('Agregando al carrito:', {
+    id: producto.id,
+    nombre: producto.nombre,
+    cantidad: cantidad,
+    precio: producto.precio
+  });
+  
+  // Falta implementar lógica real del carrito [ATENCIÓN]
+  alert(`${cantidad} x ${producto.nombre} agregado al carrito!`);
+}
+
+/* =============== EJECUTAR TODO =================== */
+$(document).ready(function() {
+  cargarProductoMusica();
+});

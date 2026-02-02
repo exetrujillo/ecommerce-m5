@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito - Violentistas de Siempre</title>
+
+  <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="../assets/vendors/bootstrap/bootstrap.min.css">
+  <!-- CSS personalizados -->
+  <link rel="stylesheet" href="../assets/css/styles.css">
+
+  <!-- Bootstrap JS -->
+  <script defer src="../assets/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+  <!-- jQuery-->
+  <script defer src="../assets/vendors/jquery/jquery-3.7.1.min.js"></script>
+  <!-- JS personalizados -->
+  <script defer src="../assets/js/layout.js"></script>
+  <script defer type="module" src="../assets/js/carrito.js"></script>
+</head>
+<body>
+  <!-- Header con NavBar -->
+  <header class="bg-dark text-white p-2">
+    <div id="navbar"></div>
+  </header>
+
+  <main>
+    <!-- Breadcrumb -->
+    <section class="container my-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../index.html">Inicio</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Carrito de Compras</li>
+        </ol>
+      </nav>
+    </section>
+
+    <!-- Contenido del Carrito -->
+    <section class="container py-4">
+      <h2 class="mb-4">Carrito de Compras</h2>
+
+      <div class="row">
+        <!-- Lista de productos en el carrito -->
+        <div class="col-lg-8">
+          <!-- Grid de productos con cards estilo index -->
+          <div class="row row-cols-1 row-cols-md-2 g-4 mb-4" id="productos-carrito-container">
+            <!-- Los productos se cargan dinámicamente -->
+            <div class="col">
+              <div class="card h-100">
+                <div class="card-body d-flex align-items-center justify-content-center">
+                  <div class="spinner-border text-danger" role="status">
+                    <span class="visually-hidden">Cargando carrito...</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botón continuar comprando -->
+          <a href="../index.html" class="btn btn-outline-dark">
+            ← Continuar Comprando
+          </a>
+        </div>
+
+        <!-- Resumen del pedido -->
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-header bg-dark text-white">
+              <h5 class="mb-0">Resumen del Pedido</h5>
+            </div>
+            <div class="card-body" id="resumen-carrito">
+              <!-- El resumen se carga dinámicamente -->
+            </div>
+          </div>
+
+          <!-- Información adicional -->
+          <div class="card mt-3">
+            <div class="card-body">
+              <h6 class="card-title">Información de Envío</h6>
+              <p class="card-text small text-muted">
+                Envíos a todo Chile. Tiempo estimado de entrega: 3-5 días hábiles.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+</body>
+</html>
