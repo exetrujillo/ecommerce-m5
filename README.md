@@ -5,7 +5,7 @@ Proyecto de base de datos para un sistema de e-commerce desarrollado como parte 
 ## 📋 Descripción
 
 Este proyecto contiene el esquema de base de datos SQL para un sistema de comercio electrónico que incluye:
-
+git remote add origin https://github.com/exetrujillo/ecommerce-m6.git
 - **Gestión de usuarios y autenticación**
 - **Catálogo de productos** (ropa, accesorios, música, collages)
 - **Sistema de transacciones y pedidos**
@@ -35,4 +35,4 @@ El proyecto incluye un diagrama entidad-relación completo que muestra las relac
 
 ---
 
-Desarrollado como parte del Módulo 5/6 del curso de JavaScript
+Desarrollado como parte del Módulo 5 del curso de JavaScript
